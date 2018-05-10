@@ -1,5 +1,12 @@
 import * as React from 'react';
 
+import {
+  DetailContainerList,
+  DetailContainerLabel,
+  DetailContainerWrapper,
+  DetailContainerImg,
+} from './styledComponent';
+
 type IPokemonDetailProps = {
   pokemonSelected: any;
 };
@@ -15,14 +22,20 @@ function PokemonDetail({
   }
 
   return (
-    <div>
-        <h3>Pokemon selected: {pokemonSelected.name} </h3>
+    <DetailContainerWrapper>
+        <DetailContainerLabel>Pokemon selected: {pokemonSelected.name} </DetailContainerLabel>
+
+        <DetailContainerImg>
+          <img src={pokemonSelected.sprites.front_default} alt={pokemonSelected.name} />
+          <img src={pokemonSelected.sprites.back_shiny} alt={pokemonSelected.name} />
+        </DetailContainerImg>
+
         <span>Weight: {pokemonSelected.weight} </span><br />
         <span>Moves: </span><br />
-        <ul>
+        <DetailContainerList>
           {  pokemonSelected.moves ? pokemonSelected.moves.map(renderPokemonMoves) : [] }
-        </ul>
-    </div>
+        </DetailContainerList>
+    </DetailContainerWrapper>
   );
 }
 

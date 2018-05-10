@@ -1,5 +1,15 @@
-import React from "react"
+import React from 'react';
 import PokemonDetail from './pokemonDetail';
+
+import {
+    AppWrapper,
+    AppContainer,
+    PokemonListContainer,
+    DetailContainer,
+    PokemonCard,
+    Button,
+    CodeChallengeLabel,
+} from './styledComponent';
 
 class PokemonList extends React.Component {
     constructor(props) {
@@ -39,9 +49,10 @@ class PokemonList extends React.Component {
 
     renderPokemonData = (pokemon: any) => {
         return (
-            <div key={pokemon.name} onClick={() => this.setPokemon(pokemon)}>
-                <span>POKEMON: {pokemon.name}</span><br />
-            </div>
+            <PokemonCard key={pokemon.name} onClick={() => this.setPokemon(pokemon)}>
+                <h3>{pokemon.name}</h3><br />
+                <Button>See Details</Button>
+            </PokemonCard>
         );
     }
 
@@ -51,22 +62,24 @@ class PokemonList extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Code Challenge - DouglasPonce </h1>
-                <div>
-                    { this.state.listPokemons ? this.state.listPokemons.map(this.renderPokemonData) : [] }
-                </div>
+            <AppWrapper>
+                <CodeChallengeLabel>Code Challenge - DouglasPonce </CodeChallengeLabel>
 
-                <br /><hr />
+                <AppContainer>
+                    <PokemonListContainer>
+                        { this.state.listPokemons ? this.state.listPokemons.map(this.renderPokemonData) : [] }
+                    </PokemonListContainer>
 
-                {
-                    this.isPokemonSet() ?
-                        <PokemonDetail
-                            pokemonSelected={this.state.pokemonSelected}
-                        />
-                    : ''
-                }
-            </div>
+                    <DetailContainer>
+                        {   this.isPokemonSet() ?
+                                <PokemonDetail
+                                    pokemonSelected={this.state.pokemonSelected}
+                                />
+                            : ''
+                        }
+                    </DetailContainer>
+                </AppContainer>
+            </AppWrapper>
         );
     }
 }

@@ -11,7 +11,7 @@ export const AppContainer = styled.div`
     flex-direction: row;
 `;
 
-export const PokemonListContainer = styled.div`
+export const AlbumListContainer = styled.div`
     display: flex;
     flex-basis: 55%;
     flex-wrap: wrap;
@@ -20,7 +20,7 @@ export const PokemonListContainer = styled.div`
     margin: 3% 5% auto;
 `;
 
-export const PokemonCard = styled.div`
+export const AlbumCard = styled.div`
     flex-direction: column;
     flex-basis: calc(50%- 20px);
     background-color: ${ThemeColors.lightGray};
@@ -30,6 +30,7 @@ export const PokemonCard = styled.div`
     text-align: center;
     font-weight: 500;
     height: 100px;
+    max-width: 140px;
     text-transform: capitalize;
 `;
 
